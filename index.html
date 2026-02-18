@@ -177,8 +177,8 @@
       background: white;
       color: #ff4b2b;
       border: none;
-      padding: 12px 35px;
-      font-size: 20px;
+      padding: 10px 25px;
+      font-size: 16px;
       border-radius: 50px;
       font-weight: bold;
       cursor: pointer;
@@ -214,8 +214,8 @@
       background: white;
       color: #f2994a; /* Text color matches the gradient */
       border: none;
-      padding: 12px 35px;
-      font-size: 20px;
+      padding: 10px 25px;
+      font-size: 16px;
       border-radius: 50px;
       font-weight: bold;
       cursor: pointer;
@@ -250,8 +250,8 @@
       background: white;
       color: #2980b9;
       border: none;
-      padding: 12px 35px;
-      font-size: 20px;
+      padding: 10px 25px;
+      font-size: 16px;
       border-radius: 50px;
       font-weight: bold;
       cursor: pointer;
@@ -369,8 +369,9 @@
     }
 
     /* Font size for Import/Clear buttons to match Table Header (ល.រ.) */
-    .controls .buttons button {
-      font-size: 16px;
+    .controls .buttons button, #saveImage, #savePdf, #saveImage2, #savePdf2 {
+      font-size: 14px;
+      padding: 5px 12px;
     }
 
     /* Container for Fishing Buttons */
@@ -391,6 +392,12 @@
       justify-content: center;
     }
 
+    /* Compact buttons for Saved Lists Manager */
+    .saved-lists-manager .buttons button {
+      padding: 5px 12px !important;
+      font-size: 14px !important;
+    }
+
     /* 3D Button Design (All Buttons) */
     .buttons button, 
     #spinButton, 
@@ -399,7 +406,8 @@
     .panel-buttons button,
     #timeoutModal button,
     #timerWarningModal button, #deleteConfirmModal button, #successModal button,
-    #emptyInputModal button, #saveListModal button, #noNamesToCopyModal button, #saveEmptyModal button {
+    #emptyInputModal button, #saveListModal button, #noNamesToCopyModal button, #saveEmptyModal button,
+    #distributeGroups, #distributeGroups2 {
       border: none;
       font-family: 'Khmer OS Battambang';
       border-radius: 15px;
@@ -408,9 +416,10 @@
       box-shadow: 0 6px 0 rgba(0,0,0,0.2) !important;
       font-weight: bold;
       transform: translateY(0);
-      font-size: 20px;
+      font-size: 14px;
       white-space: nowrap;
       margin: 5px;
+      padding: 6px 12px;
     }
 
     /* Import & Clear Buttons (Fresh Colors) */
@@ -422,6 +431,15 @@
       background: linear-gradient(135deg, #ff416c, #ff4b2b); /* Vibrant Red */
       color: #000;
     }
+    
+    /* Distribute Groups Button (Purple) - Match Save List Size */
+    #distributeGroups, #distributeGroups2 {
+      background: linear-gradient(135deg, #834d9b, #d04ed6);
+      color: white;
+      padding: 5px 12px;
+      font-size: 14px;
+    }
+
     /* Override Saved List Load Button to pop against blue background */
     [id^="savedLists"][id$="BtnLoad"] {
       background: linear-gradient(135deg, #00c6ff, #0072ff) !important;
@@ -456,10 +474,10 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 10px 25px;
+      padding: 6px 12px;
       gap: 8px;
       flex: 1; /* Same size */
-      font-size: 16px;
+      font-size: 14px;
     }
     #historyNames:hover, #historyFishing:hover, #historyGroups:hover, #historyGroups2:hover, #historyTimer:hover {
       transform: translateY(-3px);
@@ -498,11 +516,11 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 10px 25px;
+      padding: 6px 12px;
       gap: 8px;
       flex: 1; /* Same size */
       user-select: none;
-      font-size: 16px;
+      font-size: 14px;
     }
     .hide-names-btn:hover {
       transform: translateY(-3px);
@@ -580,26 +598,24 @@
     #spinFullscreenBtn, #fishingFullscreenBtn, #timerFullscreenBtn, #fullscreenBtn, #fullscreenBtn2 {
       background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%); /* Vibrant Blue Gradient */
       color: #000;
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 10px; /* Rectangular */
+      border: none;
+      border-radius: 15px; /* Rectangular */
       font-family: 'Khmer OS Battambang';
       font-weight: bold;
       cursor: pointer;
-      box-shadow: 0 4px 15px rgba(0, 114, 255, 0.4);
-      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-      padding: 5px 15px;
+      box-shadow: 0 6px 0 rgba(0,0,0,0.2) !important;
+      transition: all 0.1s ease;
+      padding: 6px 12px;
       flex: 0 0 auto;
-      font-size: 28px;
+      font-size: 14px;
     }
-    #spinFullscreenBtn:hover, #fishingFullscreenBtn:hover, #timerFullscreenBtn:hover, #fullscreenBtn:hover, #fullscreenBtn2:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 8px 25px rgba(0, 114, 255, 0.6); filter: brightness(1.3); }
-    #spinFullscreenBtn:active, #fishingFullscreenBtn:active, #timerFullscreenBtn:active, #fullscreenBtn:active, #fullscreenBtn2:active { transform: translateY(1px) scale(0.98); box-shadow: 0 2px 5px rgba(0, 114, 255, 0.3); }
 
     /* Specific styles for Timer Buttons to maintain size */
     #timerSection .buttons button {
       color: #000;
-      font-size: 20px;
-      padding: 10px 20px;
-      min-width: 120px;
+      font-size: 14px;
+      padding: 6px 12px;
+      min-width: 80px;
       white-space: nowrap;
     }
     
@@ -608,7 +624,7 @@
       #timerSection .buttons button {
         min-width: auto; /* Allow smaller width on mobile */
         flex: 1; /* Distribute space evenly */
-        font-size: 20px;
+        font-size: 14px;
         padding: 10px;
       }
     }
@@ -618,7 +634,7 @@
     #timerMinuteInput::placeholder,
     #timerSecondInput::placeholder {
       color: #000000;
-      opacity: 1;
+      opacity: 0.5;
     }
 
     /* Dark Mode Placeholders for Timer */
@@ -659,26 +675,26 @@
     }
 
     /* Hover & Active States for 3D Buttons */
-    .buttons button:hover, #spinButton:hover, .preset-btn:hover, .save-actions button:hover, .panel-buttons button:hover, #timeoutModal button:hover, #timerWarningModal button:hover, #emptyInputModal button:hover, #saveListModal button:hover, #deleteConfirmModal button:hover, #noNamesToCopyModal button:hover, #saveEmptyModal button:hover, #successModal button:hover {
+    .buttons button:hover, #spinButton:hover, .preset-btn:hover, .save-actions button:hover, .panel-buttons button:hover, #timeoutModal button:hover, #timerWarningModal button:hover, #emptyInputModal button:hover, #saveListModal button:hover, #deleteConfirmModal button:hover, #noNamesToCopyModal button:hover, #saveEmptyModal button:hover, #successModal button:hover, #spinFullscreenBtn:hover, #fishingFullscreenBtn:hover, #timerFullscreenBtn:hover, #fullscreenBtn:hover, #fullscreenBtn2:hover, #distributeGroups:hover, #distributeGroups2:hover {
       transform: translateY(-2px);
       box-shadow: 0 8px 0 rgba(0,0,0,0.2) !important;
       filter: brightness(1.25);
     }
 
-    .buttons button:active, #spinButton:active, .preset-btn:active, .save-actions button:active, .panel-buttons button:active, #timeoutModal button:active, #timerWarningModal button:active, #emptyInputModal button:active, #saveListModal button:active, #deleteConfirmModal button:active, #noNamesToCopyModal button:active, #saveEmptyModal button:active, #successModal button:active {
+    .buttons button:active, #spinButton:active, .preset-btn:active, .save-actions button:active, .panel-buttons button:active, #timeoutModal button:active, #timerWarningModal button:active, #emptyInputModal button:active, #saveListModal button:active, #deleteConfirmModal button:active, #noNamesToCopyModal button:active, #saveEmptyModal button:active, #successModal button:active, #spinFullscreenBtn:active, #fishingFullscreenBtn:active, #timerFullscreenBtn:active, #fullscreenBtn:active, #fullscreenBtn2:active, #distributeGroups:active, #distributeGroups2:active {
       transform: translateY(6px) !important;
       box-shadow: 0 0 0 rgba(0,0,0,0.2) !important;
     }
     
     #startTimer { background: linear-gradient(45deg, #11998e, #38ef7d); }
     #stopTimer { background: linear-gradient(45deg, #cb2d3e, #ef473a); }
-    #resetTimer { background: linear-gradient(45deg, #DA22FF, #9733EE); width: auto; padding: 10px 25px; flex-shrink: 0; }
+    #resetTimer { background: linear-gradient(45deg, #DA22FF, #9733EE); width: auto; padding: 6px 15px; flex-shrink: 0; }
 
     /* Beautiful Buttons for Empty List Modals */
     #noNamesToCopyModal button, #saveEmptyModal button, #successModal button {
       background: white !important;
-      padding: 12px 40px !important;
-      font-size: 20px !important;
+      padding: 10px 30px !important;
+      font-size: 16px !important;
       border-radius: 50px !important;
       box-shadow: 0 10px 20px rgba(0,0,0,0.2) !important;
       border: 4px solid rgba(255,255,255,0.5) !important;
@@ -944,8 +960,8 @@
       background: linear-gradient(135deg, #ff6b6b, #ee5253);
       color: white;
       font-family: 'Khmer OS Muol Light', cursive;
-      font-size: 20px;
-      padding: 15px 50px;
+      font-size: 14px;
+      padding: 8px 25px;
       border: 4px solid rgba(255,255,255,0.3);
       border-radius: 50px;
       cursor: pointer;
@@ -1239,8 +1255,8 @@
       font-weight: bold;
     }
     #enterBtn {
-      padding: 20px 70px;
-      font-size: 20px;
+      padding: 10px 30px;
+      font-size: 16px;
       font-family: 'Khmer OS Muol Light';
       color: #764ba2;
       background: white;
@@ -1494,6 +1510,15 @@
       min-height: 0;
     }
 
+    /* Magic Book Controls (Previous/Next) - Smaller Size */
+    .book-controls button {
+      font-size: 14px !important;
+      padding: 5px 15px !important;
+    }
+    .book-controls span {
+      font-size: 14px !important;
+    }
+
     :fullscreen #groupsContainer2 .book-page {
       padding: 40px 60px;
     }
@@ -1522,9 +1547,9 @@
       }
     }
 
-    :fullscreen #groupsContainer2 .group h4 { font-size: 24px; margin-bottom: 20px; }
+    :fullscreen #groupsContainer2 .group h4 { font-size: 18px; margin-bottom: 15px; }
     :fullscreen #groupsContainer2 .group ul li { font-size: 26px; font-weight: bold; padding: 15px 10px !important; line-height: 1.4; }
-    :fullscreen #groupsContainer2 .book-controls { transform: scale(1.2); margin-top: 20px; }
+    :fullscreen #groupsContainer2 .book-controls { transform: scale(1); margin-top: 20px; }
 
     /* Additional Font Size Adjustments */
     textarea, input[type="text"], input[type="number"] {
@@ -1635,7 +1660,7 @@
         <div style="display: flex; gap: 10px; margin-top: 10px;">
           <button id="exportNames" data-translate="exportNames" style="display: none;">ទាញ Excel</button>
           <button id="historyNames" data-translate="historyLabel">ប្រវត្តិប្រតិបត្តិ</button>
-          <button id="spinFullscreenBtn" data-translate="fullscreenBtn">⛶</button>
+          <button id="spinFullscreenBtn" data-translate="fullscreenBtn">ពេញអេក្រង់</button>
         </div>
       </div>
 
@@ -1714,11 +1739,11 @@
               <tbody></tbody>
             </table>
           </div>
-          <div class="buttons" style="display: flex; gap: 10px; margin-top: 10px; flex-wrap: wrap; justify-content: flex-start;">
+          <div class="buttons" style="display: flex; gap: 10px; margin-top: 10px; flex-wrap: wrap; justify-content: flex-start; align-items: center;">
             <button id="exportGroupNames" data-translate="exportGroupNames" style="display: none;">ទាញ Excel</button>
             <button id="saveImage" data-translate="saveImage">រក្សាទុករូបភាព</button>
             <button id="savePdf" data-translate="savePdf">រក្សាទុក PDF</button>
-            <button id="fullscreenBtn" data-translate="fullscreenBtn">⛶</button>
+            <button id="fullscreenBtn" data-translate="fullscreenBtn">ពេញអេក្រង់</button>
           </div>
         </div>
       </div>
@@ -1788,11 +1813,11 @@
               <tbody></tbody>
             </table>
           </div>
-          <div class="buttons" style="display: flex; gap: 10px; margin-top: 10px; flex-wrap: wrap; justify-content: flex-start;">
+          <div class="buttons" style="display: flex; gap: 10px; margin-top: 10px; flex-wrap: wrap; justify-content: flex-start; align-items: center;">
             <button id="exportGroupNames2" data-translate="exportGroupNames" style="display: none;">ទាញ Excel</button>
             <button id="saveImage2" data-translate="saveImage">រក្សាទុករូបភាព</button>
             <button id="savePdf2" data-translate="savePdf">រក្សាទុក PDF</button>
-            <button id="fullscreenBtn2" data-translate="fullscreenBtn">⛶</button>
+            <button id="fullscreenBtn2" data-translate="fullscreenBtn">ពេញអេក្រង់</button>
           </div>
         </div>
       </div>
@@ -1830,16 +1855,15 @@
 
       <div class="buttons" style="justify-content: center; margin-bottom: 10px; gap: 15px; flex-wrap: wrap; align-items: center;">
         <div style="display: flex; gap: 10px; background: rgba(255,255,255,0.3); padding: 10px; border-radius: 20px; flex-wrap: wrap; justify-content: center; align-items: center;">
-          <input type="number" id="timerHourInput" placeholder="ម៉ោង" data-translate-placeholder="timerHour" min="0" style="width: 130px; padding: 12px; border-radius: 15px; border: none; background: #ffcdd2; color: #000; text-align: center; font-size: 1.6rem; font-family: 'Khmer OS Battambang'; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
-          <input type="number" id="timerMinuteInput" placeholder="នាទី" data-translate-placeholder="timerMinute" min="0" style="width: 130px; padding: 12px; border-radius: 15px; border: none; background: #c8e6c9; color: #000; text-align: center; font-size: 1.6rem; font-family: 'Khmer OS Battambang'; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
-          <input type="number" id="timerSecondInput" placeholder="វិនាទី" data-translate-placeholder="timerSecond" min="0" style="width: 130px; padding: 12px; border-radius: 15px; border: none; background: #bbdefb; color: #000; text-align: center; font-size: 1.6rem; font-family: 'Khmer OS Battambang'; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
-          <input type="color" id="timerColorPicker" value="#FFD700" style="width: 60px; height: 55px; border: none; cursor: pointer; background: transparent; padding: 0; border-radius: 10px;" title="ប្តូរពណ៌អក្សរ">
-          <input type="color" id="timerBgColorPicker" value="#ffffff" style="width: 60px; height: 55px; border: none; cursor: pointer; background: transparent; padding: 0; border-radius: 10px;" title="ប្តូរពណ៌ផ្ទៃ">
+          <input type="number" id="timerHourInput" placeholder="ម៉ោង" data-translate-placeholder="timerHour" min="0" style="width: 100px; padding: 6px; border-radius: 15px; border: none; background: #ffcdd2; color: #000; text-align: center; font-size: 14px; font-family: 'Khmer OS Battambang'; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+          <input type="number" id="timerMinuteInput" placeholder="នាទី" data-translate-placeholder="timerMinute" min="0" style="width: 100px; padding: 6px; border-radius: 15px; border: none; background: #c8e6c9; color: #000; text-align: center; font-size: 14px; font-family: 'Khmer OS Battambang'; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+          <input type="number" id="timerSecondInput" placeholder="វិនាទី" data-translate-placeholder="timerSecond" min="0" style="width: 100px; padding: 6px; border-radius: 15px; border: none; background: #bbdefb; color: #000; text-align: center; font-size: 14px; font-family: 'Khmer OS Battambang'; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+          <input type="color" id="timerColorPicker" value="#FFD700" style="width: 50px; height: 45px; border: none; cursor: pointer; background: transparent; padding: 0; border-radius: 10px;" title="ប្តូរពណ៌អក្សរ">
+          <input type="color" id="timerBgColorPicker" value="#ffffff" style="width: 50px; height: 45px; border: none; cursor: pointer; background: transparent; padding: 0; border-radius: 10px;" title="ប្តូរពណ៌ផ្ទៃ">
           <button id="startTimer" data-translate="startTimer">ចាប់ផ្តើម</button>
           <button id="stopTimer" data-translate="stopTimer">បញ្ឈប់</button>
           <button id="resetTimer" data-translate="resetTimer">កំណត់ថ្មី</button>
-          <button id="timerFullscreenBtn" data-translate="timerFullscreenBtn">⛶</button>
-          <button id="historyTimer" data-translate="historyLabel">ប្រវត្តិប្រតិបត្តិ</button>
+          <button id="timerFullscreenBtn" data-translate="timerFullscreenBtn">ពេញអេក្រង់</button>
         </div>
       </div>
 
@@ -1896,7 +1920,7 @@
         <div class="export-history-buttons">
           <button id="exportFishingNames" data-translate="exportFishingNames" style="display: none;">ទាញ Excel</button>
           <button id="historyFishing" data-translate="historyLabel">ប្រវត្តិប្រតិបត្តិ</button>
-          <button id="fishingFullscreenBtn" data-translate="fullscreenBtn">⛶</button>
+          <button id="fishingFullscreenBtn" data-translate="fullscreenBtn">ពេញអេក្រង់</button>
           <label class="hide-names-btn">
             <input type="checkbox" id="hideFishNamesCheckbox">
             <span data-translate="hideNames">លាក់ឈ្មោះ</span>
@@ -2241,7 +2265,7 @@
       exportGroupNames: "ទាញ Excel",
       saveImage: "រក្សាទុករូបភាព",
       savePdf: "រក្សាទុក PDF",
-      fullscreenBtn: "⛶",
+      fullscreenBtn: "ពេញអេក្រង់",
       zoomIn: "ពង្រីក (+)",
       zoomOut: "បង្រួម (-)",
       zoomReset: "កំណត់ដើម (Reset)",
@@ -2259,7 +2283,7 @@
       startTimer: "ចាប់ផ្តើម",
       stopTimer: "បញ្ឈប់",
       resetTimer: "កំណត់ថ្មី",
-      timerFullscreenBtn: "⛶",
+      timerFullscreenBtn: "ពេញអេក្រង់",
       fishingNameInputPlaceholder: "សូមបញ្ចូលឈ្មោះត្រង់នេះ (មួយជួរឈ្មោះមួយ)",
       importFishingNames: "បញ្ចូលបញ្ជីឈ្មោះ",
       clearFishingNames: "លុបចោល",
@@ -2305,7 +2329,8 @@
       noNamesTitle: "បញ្ជីទទេ!",
       noNamesMsg: "គ្មានឈ្មោះសម្រាប់ចម្លងទេ",
       saveEmptyTitle: "បញ្ជីទទេ!",
-      saveEmptyMsg: "សូមបញ្ចូលឈ្មោះសិស្សជាមុនសិន"
+      saveEmptyMsg: "សូមបញ្ចូលឈ្មោះសិស្សជាមុនសិន",
+      repLabel: "អ្នកតំណាងក្រុម"
     },
     en: {
       randomCallTab: "Random Call ▼",
@@ -2331,7 +2356,7 @@
       exportGroupNames: "Download Excel",
       saveImage: "Save Image",
       savePdf: "Save PDF",
-      fullscreenBtn: "⛶",
+      fullscreenBtn: "Fullscreen",
       zoomIn: "Zoom In (+)",
       zoomOut: "Zoom Out (-)",
       zoomReset: "Reset Zoom",
@@ -2349,7 +2374,7 @@
       startTimer: "Start",
       stopTimer: "Stop",
       resetTimer: "Reset",
-      timerFullscreenBtn: "⛶",
+      timerFullscreenBtn: "Fullscreen",
       fishingNameInputPlaceholder: "Enter names here (one per line)",
       importFishingNames: "Import List",
       clearFishingNames: "Clear",
@@ -2395,7 +2420,8 @@
       noNamesTitle: "Empty List!",
       noNamesMsg: "No names to copy.",
       saveEmptyTitle: "Empty List!",
-      saveEmptyMsg: "Please enter student names first."
+      saveEmptyMsg: "Please enter student names first.",
+      repLabel: "Representative"
     }
   };
 

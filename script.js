@@ -259,6 +259,7 @@ const exportGroupNames = document.getElementById('exportGroupNames');
 const clearGroupNames = document.getElementById('clearGroupNames');
 const groupCountInput = document.getElementById('groupCount');
 const distributeBtn = document.getElementById('distributeGroups');
+if (distributeBtn) distributeBtn.textContent = 'ចែកក្រុម';
 const groupTableBody = document.querySelector('#groupNamesTable tbody');
 const groupsContainer = document.getElementById('groupsContainer');
 const saveImageBtn = document.getElementById('saveImage');
@@ -269,6 +270,7 @@ let groupNames = ['សុនិតា', 'ចីរកាល', 'ជានិច�
 let lastBuckets = null;
 let groupTitles = [];
 let groupColors = [];
+let groupReps = [];
 
 saveImageBtn.style.display = 'none';
 savePdfBtn.style.display = 'none';
@@ -302,6 +304,7 @@ clearGroupNames.onclick = () => {
   lastBuckets = null;
   groupTitles = [];
   groupColors = [];
+  groupReps = [];
 };
 
 function renderGroupTable() {
@@ -339,6 +342,7 @@ const exportGroupNames2 = document.getElementById('exportGroupNames2');
 const clearGroupNames2 = document.getElementById('clearGroupNames2');
 const groupCountInput2 = document.getElementById('groupCount2');
 const distributeBtn2 = document.getElementById('distributeGroups2');
+if (distributeBtn2) distributeBtn2.textContent = 'ចែកក្រុម';
 const groupTableBody2 = document.querySelector('#groupNamesTable2 tbody');
 const groupsContainer2 = document.getElementById('groupsContainer2');
 const saveImageBtn2 = document.getElementById('saveImage2');
@@ -349,6 +353,7 @@ let groupNames2 = ['ជានិច្ច', 'សុនិតា', 'ចីរក�
 let lastBuckets2 = null;
 let groupTitles2 = [];
 let groupColors2 = [];
+let groupReps2 = [];
 let currentBookPage = 0; // Track current page for Magic Book
 
 if(saveImageBtn2) saveImageBtn2.style.display = 'none';
@@ -383,6 +388,7 @@ if(clearGroupNames2) clearGroupNames2.onclick = () => {
   lastBuckets2 = null;
   groupTitles2 = [];
   groupColors2 = [];
+  groupReps2 = [];
 };
 
 function renderGroupTable2() {
@@ -427,6 +433,7 @@ if(distributeBtn2) distributeBtn2.onclick = () => {
   lastBuckets2 = buckets;
   groupTitles2 = [];
   groupColors2 = [];
+  groupReps2 = buckets.map(g => Math.floor(Math.random() * g.length));
   currentBookPage = 0; // Reset to first page
   renderGroups2(buckets, true);
   saveImageBtn2.style.display = 'inline-block';
@@ -504,7 +511,14 @@ function renderMagicGroup(members, index) {
           </div>
       </div>
       <ul style="zoom: ${zoomLevel2}" ondrop="drop(event)" ondragover="allowDrop(event)" ondragenter="dragEnter(event)" ondragleave="dragLeave(event)">
-          ${members.map((m, j) => `<li draggable="true" ondragstart="drag(event)" data-name="${m}">${toKhmer(j + 1)}. ${m}</li>`).join('')}
+          ${members.map((m, j) => {
+            const showRep = document.getElementById('showRepCheckbox2')?.checked;
+            let repIdx = groupReps2[index];
+            if (repIdx === undefined || repIdx >= members.length) repIdx = 0;
+            const repTitle = lang === 'kh' ? 'អ្នកតំណាងក្រុម' : 'Representative';
+            const repIcon = (showRep && j === repIdx) ? ` <span style="color:#f1c40f; text-shadow:1px 1px 1px #000;" title="${repTitle}">👑</span>` : '';
+            return `<li draggable="true" ondragstart="drag(event)" data-name="${m}">${toKhmer(j + 1)}. ${m}${repIcon}</li>`;
+          }).join('')}
       </ul>
   </div>
   `;
@@ -718,11 +732,13 @@ function handleGroupDrop(e) {
             reorder(lastBuckets, sourceIndex, targetIndex);
             reorder(groupTitles, sourceIndex, targetIndex);
             reorder(groupColors, sourceIndex, targetIndex);
+            reorder(groupReps, sourceIndex, targetIndex);
             renderGroups(lastBuckets);
         } else {
             reorder(lastBuckets2, sourceIndex, targetIndex);
             reorder(groupTitles2, sourceIndex, targetIndex);
             reorder(groupColors2, sourceIndex, targetIndex);
+            reorder(groupReps2, sourceIndex, targetIndex);
             renderGroups2(lastBuckets2);
         }
     }
@@ -757,6 +773,7 @@ distributeBtn.onclick = () => {
   lastBuckets = buckets;
   groupTitles = [];
   groupColors = [];
+  groupReps = buckets.map(g => Math.floor(Math.random() * g.length));
   renderGroups(buckets, true);
 
   saveImageBtn.style.display = 'inline-block';
@@ -806,7 +823,14 @@ function renderGroups(buckets, animate = false) {
         </div>
       </div>
       <ul style="zoom: ${zoomLevel1}" ondrop="drop(event)" ondragover="allowDrop(event)" ondragenter="dragEnter(event)" ondragleave="dragLeave(event)">
-        ${members.map((m, j) => `<li draggable="true" ondragstart="drag(event)" data-name="${m}">${toKhmer(j + 1)}. ${m}</li>`).join('')}
+        ${members.map((m, j) => {
+          const showRep = document.getElementById('showRepCheckbox1')?.checked;
+          let repIdx = groupReps[i];
+          if (repIdx === undefined || repIdx >= members.length) repIdx = 0;
+          const repTitle = lang === 'kh' ? 'អ្នកតំណាងក្រុម' : 'Representative';
+          const repIcon = (showRep && j === repIdx) ? ` <span style="color:#f1c40f; text-shadow:1px 1px 1px #000;" title="${repTitle}">👑</span>` : '';
+          return `<li draggable="true" ondragstart="drag(event)" data-name="${m}">${toKhmer(j + 1)}. ${m}${repIcon}</li>`;
+        }).join('')}
       </ul>`;
     groupsContainer.appendChild(div);
   });
@@ -1425,3 +1449,55 @@ if (groupsContainer2) {
     };
   }
 }
+
+// ================= REPRESENTATIVE CHECKBOX SETUP =================
+function setupRepCheckbox(btnId, checkboxId, renderCallback) {
+  const btn = document.getElementById(btnId);
+  if (!btn) return;
+  
+  const wrapper = document.createElement('div');
+  wrapper.style.display = 'inline-flex';
+  wrapper.style.alignItems = 'center';
+  wrapper.style.marginLeft = '0px';
+  wrapper.style.verticalAlign = 'middle';
+  
+  const checkbox = document.createElement('input');
+  checkbox.type = 'checkbox';
+  checkbox.id = checkboxId;
+  checkbox.style.width = '20px';
+  checkbox.style.height = '20px';
+  checkbox.style.cursor = 'pointer';
+  checkbox.style.accentColor = '#27ae60';
+  
+  const label = document.createElement('label');
+  label.htmlFor = checkboxId;
+  label.textContent = 'អ្នកតំណាងក្រុម';
+  label.style.marginLeft = '5px';
+  label.style.cursor = 'pointer';
+  label.style.fontFamily = "'Khmer OS Battambang', sans-serif";
+  label.style.fontWeight = 'bold';
+  label.style.color = 'inherit'; // ប្រើពណ៌តាម Parent (សម្រាប់ Dark Mode)
+  label.setAttribute('data-translate', 'repLabel');
+  
+  wrapper.appendChild(checkbox);
+  wrapper.appendChild(label);
+  
+  if(btn.parentNode) btn.parentNode.insertBefore(wrapper, btn.nextSibling);
+  
+  checkbox.addEventListener('change', renderCallback);
+}
+
+// Initialize Checkboxes for both Group sections
+setupRepCheckbox('distributeGroups', 'showRepCheckbox1', () => renderGroups(lastBuckets));
+setupRepCheckbox('distributeGroups2', 'showRepCheckbox2', () => renderGroups2(lastBuckets2));
+
+// ================= REMOVE DELETE BUTTON FROM SAVED LISTS =================
+const savedListMgrs = document.querySelectorAll('.saved-lists-manager');
+savedListMgrs.forEach(mgr => {
+  const buttons = mgr.querySelectorAll('button');
+  buttons.forEach(btn => {
+    if (btn.textContent.trim() === 'លុប') {
+      btn.remove();
+    }
+  });
+});

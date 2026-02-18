@@ -214,8 +214,8 @@ footer {
 .group-config {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 15px;
+  justify-content: center;
+  gap: 5px;
   margin-top: 20px;
   padding: 15px;
   background-color: #f8f9fa;
@@ -588,8 +588,8 @@ footer {
 }
 .magic-book {
   width: 100%;
-  max-width: 1000px;
-  min-height: 600px;
+  max-width: 800px;
+  min-height: 500px;
   background-color: #fdf5e6;
   /* Optional texture for paper feel */
   background-image: linear-gradient(to right, rgba(0,0,0,0.02) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.02) 1px, transparent 1px);
@@ -615,7 +615,7 @@ footer {
 }
 .book-page {
   flex: 1;
-  padding: 30px 50px;
+  padding: 20px 30px;
   position: relative;
   overflow-y: auto;
 }
@@ -742,7 +742,7 @@ footer {
   height: 100%;
   top: 0;
   left: 0;
-  padding: 30px 50px; /* Match .book-page padding */
+  padding: 20px 30px; /* Match .book-page padding */
   backface-visibility: hidden;
   background-color: #fdf5e6;
   overflow: hidden;
@@ -870,13 +870,24 @@ footer {
 #zoomInBtn, #zoomOutBtn,
 #zoomInBtn2, #zoomOutBtn2 {
   font-family: 'Khmer OS Battambang', sans-serif;
-  padding: 10px 22px;
+  padding: 10px 18px;
   font-size: 16px;
   border: none;
   border-radius: 999px;
   cursor: pointer;
   box-shadow: 0 4px 10px rgba(0,0,0,0.15);
   transition: all 0.25s ease;
+}
+
+/* Make Save/Fullscreen buttons expand like the Edit button */
+#saveImage,
+#savePdf,
+#saveImage2,
+#savePdf2,
+#fullscreenBtn {
+  flex: 1;
+  min-width: 120px;
+  text-align: center;
 }
 
 #saveImage, #saveImage2 {
@@ -975,9 +986,9 @@ footer {
 
 /* Timer Inputs Responsive Fix */
 #timerHourInput, #timerMinuteInput, #timerSecondInput {
-  width: auto !important; /* Override inline styles */
-  min-width: 70px;
-  flex: 1;
+  width: 100px !important; /* Override inline styles */
+  min-width: auto;
+  flex: none;
 }
 
 /* ================= Export Button ================= */
@@ -1304,6 +1315,12 @@ body.dark-mode #fishingNamesTable tr:nth-child(odd) { background-color: #1e1e1e;
 /* Cards & Timer Dark Mode */
 body.dark-mode .group { background-color: #1e1e1e; }
 body.dark-mode .group ul li { color: #ffffff !important; border-bottom-color: #333; }
+
+/* Magic Book Text Color Override in Dark Mode */
+body.dark-mode .magic-book .group ul li {
+  color: #000000 !important;
+}
+
 body.dark-mode .group h4 {
   background: linear-gradient(to right, #ffffff 0%, #ffeb3b 50%, #ffffff 100%);
   background-size: 200% auto;
